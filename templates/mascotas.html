@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Mascotas</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='estilos.css')}}">
+</head>
+<body>
+
+    <header>
+        <h1>🐾 Sistema de Veterinaria</h1>
+        <a href="{{ url_for('logout')}}">Cerrar sesión</a>
+    </header>
+
+    <main>
+        <h2>Registrar mascota</h2>
+        {% with mensajes = get_flashed_messages() %}
+            {% for mensaje in mensajes %}
+                <p class="mensaje">{{ mensaje }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <form action="{{ url_for('registrar')}}" method="POST" class="formulario">
+            <input name="nombre" placeholder="Nombre" required><br><br>
+            <input name="especie" placeholder="Especie" required><br><br>
+            <input name="raza" placeholder="Raza"><br><br>
+            <input type="number" name="edad" placeholder="Edad" min="0" required><br><br>
+            <input name="propietario" placeholder="Propietario" required><br><br>
+            <button type="submit">Registrar mascota</button>
+        </form>
+
+        <h2>Mascotas registradas</h2>
+
+        <div class="tablas-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Especie</th>
+                        <th>Raza</th>
+                        <th>Edad</th>
+                        <th>Propietario</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for mascota in mascotas%}
+                    <tr>
+                        <td>{{ mascota[0]}}</td>
+                        <td colspan="0" style="display: none;"></td>
+                        <td>{{ mascota[1]}}</td>
+                        <td>{{ mascota[2]}}</td>
+                        <td>{{ mascota[3]}}</td>
+                        <td>{{ mascota[4]}}</td>
+                        <td>{{ mascota[5]}}</td>
+                        <td>
+                            <details>
+                                <summary>Editar</summary>
+                                <form action="{{ url_for('actualizar',id=mascota[0]) }}" method="POST">
+                                    <input name="nombre" value="{{ mascota[1]}}" required><br>
+                                    <input name="especie" value="{{ mascota[2]}}" required><br>
+                                    <input name="raza" value="{{ mascota[3] or ''}}"><br>
+                                    <input type="number" name="edad" value="{{ mascota[4]}}" min="0" required><br>
+                                    <input name="propietario" value="{{ mascota[5]}}" required><br>
+                                    <button type="submit">Guardar cambios</button>
+                                </form>
+                            </details>
+
+                            <form action="{{url_for('eliminar',id=mascota[0])}}" method="POST" onsubmit="return confirm('¿Eliminar esta mascota?')">
+                                <button type="submit">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+</body>
+</html>

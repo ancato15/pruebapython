@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.login {
+    width: 90%;
+    max-width: 380px;
+    margin: 100px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px #0002;
+}
+
+.login h1,
+.login h3 {
+    text-align: center;
+    color: #0f766e;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 11px;
+    margin: 8px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+button {
+    padding: 11px 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #0f766e;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #115e59;
+}
+
+.login button {
+    width: 100%;
+}
+
+header {
+    background: #0f766e;
+    color: white;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+header a {
+    color: white;
+}
+
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+    background: white;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: #ccfbf1;
+}
+
+.eliminar {
+    background: #dc2626;
+}
+
+.eliminar:hover {
+    background: #991b1b;
+}
+
+.mensaje {
+    padding: 10px;
+    background: #d1fae5;
+    border-radius: 6px;
+}
+
+details form {
+    min-width: 200px;
+}

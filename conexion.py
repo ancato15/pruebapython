@@ -4,6 +4,7 @@ import pymysql
 
 
 def conectar():
+    #Desarrollo de produccion
     url = os.environ.get("DATABASE_URL")
     if url:
         u = urlparse(url)
